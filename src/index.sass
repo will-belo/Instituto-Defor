@@ -1,0 +1,324 @@
+@use 'mixins'
+    
+$main-color: #EE7322
+    
+*, html
+    margin: 0
+    padding: 0
+    font-weight: 300
+    box-sizing: border-box
+    font-family: 'Segoe UI'
+
+h1
+    text-transform: uppercase
+
+ol 
+    list-style: none
+    counter-reset: li
+            
+    li
+        display: flex
+        align-items: center
+        counter-increment: li
+        margin-top: 20px
+
+        &::before
+            font-size: 2em
+            font-weight: 700
+            margin-right: 20px
+            color: $main-color
+            content: '0' counter(li)
+            display: inline-block    
+
+button
+    @include mixins.button
+    
+.recoil
+    padding: 0 15%
+
+    @include mixins.mobile
+        padding: 0 10%
+    
+header
+    position: relative
+    .menu
+        height: 9vh
+        padding: 0 10%
+
+    &::after
+        top: 0
+        z-index: -1
+        content: ''
+        width: 100%
+        height: 95vh
+        display: block
+        position: absolute
+        background-size: contain
+        background-position: right
+        background-repeat: no-repeat
+        background-image: url('../assets/asset-1.png')
+
+        @include mixins.mobile
+            width: 60%
+            right: 0
+            background-position: top
+
+    .header-block
+        height: 90vh
+        display: flex
+        justify-content: space-between
+
+        > div
+            flex: 1
+            gap: 20px 0
+            display: flex
+            flex-direction: column
+            justify-content: center
+
+        div
+            &:nth-child(2)
+                align-items: center
+
+                @include mixins.mobile
+                    display: none
+
+main
+    > div
+        margin: 12% 0
+
+        @include mixins.mobile
+            margin: 40% 0
+
+    .title
+        text-align: center
+        color: $main-color
+        margin-bottom: 20px
+
+        h1
+            font-weight: 400
+
+    .about-us
+        height: 100vh
+
+        @include mixins.mobile
+            height: auto
+            margin: 0 0 50px 0
+
+        &-content
+            display: flex
+            height: 100%
+            flex-direction: column
+            justify-content: space-evenly
+
+            @include mixins.mobile
+                > div
+                    margin: 20px 0
+
+
+    .benefits
+        position: relative
+        overflow: hidden
+
+        &::after
+            top: 0
+            right: -100px
+            z-index: -1
+            content: ''
+            width: 200px
+            height: 55vh
+            position: absolute
+            background-size: contain
+            background-position: right
+            background-repeat: no-repeat
+            background-image: url('../assets/asset-2.png')
+
+        &-content
+            display: flex
+            margin-top: 50px
+            align-items: center
+            justify-content: space-between
+            
+            @include mixins.mobile
+                div 
+                    &:first-child
+                        display: none
+
+            > div
+                flex: 1
+                display: flex
+                justify-content: center
+
+    .form
+        .form-inputs form
+            gap: 20px 50px
+            display: flex  
+            flex-wrap: wrap
+
+            @include mixins.mobile
+                gap: 20px
+
+            input[type=submit]
+                @include mixins.button
+                width: calc( 50% - 25px )
+
+                @include mixins.mobile
+                    width: calc( 50% - 10px )
+
+            input[type=text]
+                padding: 10px 20px
+                border-radius: 50px
+                box-sizing: border-box
+                width: calc( 50% - 25px )
+                border: solid 1px $main-color
+                
+                @include mixins.mobile
+                    width: calc( 50% - 10px )
+    
+    .works
+        color: #FFFFFF
+        padding-top: 50px 
+        position: relative
+        padding-bottom: 50px
+        background-color: #115372
+
+        &::after
+            top: -25vh
+            z-index: -1
+            left: -50px
+            content: ''
+            width: 200px
+            height: 55vh
+            position: absolute
+            background-size: contain
+            background-position: right
+            background-repeat: no-repeat
+            background-image: url('../assets/asset-3.png')
+
+        .title
+            color: #FFFFFF
+
+        .work-grid
+            gap: 20px
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+
+            .work
+                gap: 20px
+                display: flex
+                width: calc( 50% - 20px )
+                
+                &-icon
+                    width: 50px
+                    height: 50px
+                    margin: auto
+                    display: flex
+                    border-radius: 50%
+                    align-items: center
+                    justify-content: center
+                    border: solid 2px #FFFFFF
+                
+                &-text
+                    width: 90%
+
+                    @include mixins.mobile
+                        width: 80%
+
+                @include mixins.mobile
+                    width: auto
+
+    .clients
+        &-controller
+            display: flex
+            justify-content: space-around
+            
+            button
+                width: 50px
+                height: 50px
+                border-radius: 100px
+        
+        &-carousel
+            gap: 0 50px
+            display: flex
+            overflow-x: auto
+            scroll-behavior: smooth
+            justify-content: space-between
+
+            > div
+                display: flex
+                justify-content: center
+                align-items: center
+
+            &::-webkit-scrollbar
+                display: none
+
+    .more
+        &-list
+            gap: 50px
+            display: flex
+            justify-content: space-between
+
+            @include mixins.mobile
+                flex-direction: column
+
+            > div
+                flex: 1
+
+            &-images
+                gap: 20px
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+
+                &-container
+                    width: calc( 50% - 20px )
+
+                &-items
+                    aspect-ratio: 12 / 9
+
+                    img
+                        width: 100%
+
+    .clients-depoiments 
+        .depoiments
+            display: flex
+            gap: 25px
+            justify-content: space-between
+
+            @include mixins.mobile
+                gap: 50px
+                flex-direction: column
+
+            .depoiment
+                flex: 1
+                gap: 20px
+                display: flex
+                align-items: center
+
+                @include mixins.mobile
+                    flex-direction: column
+
+                &-image
+                    width: 120px
+                    height: 120px
+                    overflow: hidden
+                    border-radius: 50%
+
+                    img
+                        width: 100%
+                        height: 100%
+                
+                &-text
+                    width: 70%
+
+                    > div
+                        margin-top: 10px
+
+footer
+    display: flex
+    padding: 50px 12%
+    color: #FFFFFF
+    margin-top: 100px
+    align-items: center
+    background-color: #115372
+    justify-content: space-between
